@@ -33,9 +33,9 @@ public struct Money {
       case "GBP":
         usdConversion = usdConversion / 2
       case "EUR":
-        usdConversion = usdConversion * (3 / 2)
+        usdConversion = usdConversion * 3 / 2
       case "CAN":
-        usdConversion = usdConversion * (5 / 4)
+        usdConversion = usdConversion * 5 / 4
       default:
        break
     }
@@ -47,9 +47,9 @@ public struct Money {
       case "GBP":
         return amount * 2
       case "EUR":
-        return amount * (2 / 3)
+        return amount * 2 / 3
       case "CAN":
-        return amount * (4 / 5)
+        return amount * 4 / 5
       default:
         return amount
     }
@@ -59,7 +59,8 @@ public struct Money {
     if to.currency == self.currency {
       return Money(amount: self.amount + to.amount, currency: to.currency)
     }
-    return Money(amount: self.amount + self.convert(to.currency).amount, currency: to.currency)
+    var newMoneyConversion = self.convert(to.currency)
+    return Money(amount: to.amount + newMoneyConversion.amount, currency: to.currency)
   }
   
   public func subtract(_ from: Money) -> Money {
