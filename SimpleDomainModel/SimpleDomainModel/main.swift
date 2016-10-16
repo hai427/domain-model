@@ -146,21 +146,28 @@ open class Person {
   }
 }
 
-//////////////////////////////////////
-//// Family
-////
-//open class Family {
-//  fileprivate var members : [Person] = []
-//  
-//  public init(spouse1: Person, spouse2: Person) {
-//  }
+////////////////////////////////////
+// Family
+//
+open class Family {
+  fileprivate var members : [Person] = []
+  
+  public init(spouse1: Person, spouse2: Person) {
+    if spouse1.spouse == nil && spouse2.spouse == nil {
+      spouse1.spouse = spouse2
+      spouse2.spouse = spouse1
+      members.append(spouse1)
+      members.append(spouse2)
+    }
+  }
 //  
 //  open func haveChild(_ child: Person) -> Bool {
+//    
 //  }
 //  
 //  open func householdIncome() -> Int {
 //  }
-//}
+}
 
 
 
