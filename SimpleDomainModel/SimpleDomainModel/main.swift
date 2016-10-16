@@ -160,16 +160,24 @@ open class Family {
       members.append(spouse2)
     }
   }
-//  
-//  open func haveChild(_ child: Person) -> Bool {
-//    
-//  }
-//  
-//  open func householdIncome() -> Int {
-//  }
+  
+  open func haveChild(_ child: Person) -> Bool {
+    for person in members {
+      if person.age >= 21 {
+        members.append(child)
+        return true
+      }
+    }
+    return false
+  }
+  
+  open func householdIncome() -> Int {
+    var totalIncome = 0
+    for person in members {
+      if person.job != nil {
+        totalIncome += (person.job!.calculateIncome(2000))
+      }
+    }
+    return totalIncome
+  }
 }
-
-
-
-
-
